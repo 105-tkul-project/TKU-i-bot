@@ -3,7 +3,7 @@ import os
 # 要打開的語料庫
 wb = xlrd.open_workbook ('xml.xlsx')
 # 要存入的路徑
-base = os.getcwd ()+"\\text-classification-cnn-rnn\data"
+base = os.getcwd ()+"\\data"
 
 os.chdir (base)
 
@@ -23,6 +23,6 @@ for sheets in wb.sheet_names ():
     for i in range (ws.nrows):
         # create txt with rows, overwrite if file exist
         with open (f"{i}.txt", 'w') as f:
-            f.write (f"{ws.cell (i, 0).value}?{ws.cell (i, 1).value}")
+            f.write (f"{ws.cell (i, 0).value}")
 
     os.chdir (base)

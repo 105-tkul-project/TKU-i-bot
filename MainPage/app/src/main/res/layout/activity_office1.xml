@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Office1">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="306dp"
+                android:layout_height="142dp"
+                android:text="姓名 : 武士戎  職稱 : 教授兼系主任                                                            電子郵件 : wushihjung@mail.tku.edu.tw
+                                            聯絡電話 : 03-9873088 ext. 7121
+
+                                                    研究專長 : 無線網路、平行處理、資料探勘、圖論
+
+
+
+                                                    授課科目 : 資料結構、網路與通訊、個人通訊系統
+
+                                                    教師歷程系統 : http://teacher.tku.edu.tw/PsnProfile.aspx?u=t992382" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="259dp"
+                android:layout_height="133dp"
+                android:layout_weight="1"
+                android:text="姓名 : 林銀河      職稱 : 副教授                                        電子郵件 : inho@mail.tku.edu.tw                             聯絡電話 : 03-9873088 ext. 7022             研究專長 : 多媒體通訊、資料庫系統、計算機網路與通訊、Web技術與應用、數位典藏               " />
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="286dp"
+                android:layout_height="108dp"
+                android:layout_weight="1"
+                android:text="姓名 : 黃煌文     職稱 : 副教授                                  電子郵件 : hhw402@mail.tku.edu.tw              研究專長 : 電腦摸擬、科學計算、軟體開發、軟體品質管理、熱治療腫瘤、
+抗癌藥物傳輸、合金固化、控制和最佳化理論" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

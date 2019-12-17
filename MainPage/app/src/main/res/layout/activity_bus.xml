@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Bus">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="-16dp"
+        tools:layout_editor_absoluteY="-204dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="1.行車路線： 台鐵礁溪站↹礁溪轉運站↹礁溪溫泉公園站↹湯圍溝公園站↹李寶興圳↹林美社區遊客中心 ↹林美石磐步道↹淡江大學蘭陽宿舍 不經五峰旗風景區及佛光大學校內。" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="2.乘車須知： ˙免預約、免車票、可站位、現場排隊上車、車上刷卡付費(上車刷、下車不用刷)或投現(20元)。 ˙學生於平日管制時間下山時，請先將外出條給中控室保全查驗，返校時將外出條繳回中控室保全。 ˙乘客身份不限，除本校園教職員、學生外，一般民眾皆可搭乘。" />
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="3.遊客遵守事項： ˙開放區域：宿舍一樓商店街、觀景平台、克難坡、智慧花園、戶外球場(不得影響學生上課)、校園內道路、梅園、金棗園等戶外場所。 ˙不開放區域：鴻廬、宿舍大樓內部、教學大樓內部(圖書館除外)、活動中心2、3樓、汙水處理場。 ˙活動中心一樓僅供參觀及使用廁所，非經報備(體育老師)不得使用運動器材、設備，亦不可影響教學活動。˙蘭陽網咖開放供民眾使用、開心廚房不開放、實習旅館不開放。 ˙遊客須於18：00前離開校園，當地村民(林美村、三民村)可延至20：00離校。 ˙校園內不可從事非法行為，如：賭博、吸毒、烤肉、遛狗、煙火、天燈、吸菸、推銷商品、販賣物品(非店家)、大聲喧嘩、露營等。" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

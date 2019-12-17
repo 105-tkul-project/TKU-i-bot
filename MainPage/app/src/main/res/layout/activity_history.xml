@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".History" >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="61dp"
+                android:layout_gravity="left"
+                android:text="History"
+                android:textSize="36sp" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="367dp"
+                android:gravity="left"
+                android:text="蘭陽校園之成立，使本校學域更臻完備。94學年度設立創業發展學院及全球化研究與發展學院；為配合蘭陽地區特色與發展需要，於95學年度增設社區發展學院，惟該學院於97學年度停招；創業發展學院及全球化研究與發展學院則於99學年度合併為全球創業發展學院，103學年度更名為全球發展學院，下設資訊創新與科技學系（軟體工程全英語組、應用資訊全英語組）、國際觀光管理學系全英語學士班、英美語言文化學系全英語學士班及全球政治經濟學系全英語學士班，並有軍訓、體育等教學單位業務；行政業務未設二級單位，置教務、學務、總務、財務、圖書館、資訊及國際事務等業務承辦人員，提供足以符合蘭陽校園師生多元需求之行政服務。另外，為了增進藝能欣賞能力，陶冶學生美學的內涵，設置藝術家工作室，聘請知名藝術家，駐校指導。 國際化教育理念的實踐是蘭陽校園優勢，期建置為台灣高等教育國際化的特色校區。目前，有超過27個國家的學生在校園內學習及生活，每年約有180位學生出國修習學分一年，且安排學生至海外場域實習，除了打開蘭陽校園國際知名度外，輔以具體國際移動教學實踐，更能落實培育具國際競爭力優質專業人才的目標。" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:srcCompat="@tools:sample/avatars" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

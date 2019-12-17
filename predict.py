@@ -15,6 +15,7 @@ from fuzzywuzzy import process
 import xlrd
 import socket
 from _thread import start_new_thread
+
 # -----------------------------------------------------
 try:
     bool (type (unicode))
@@ -51,7 +52,7 @@ class CnnModel:
             self.model.input_x: kr.preprocessing.sequence.pad_sequences ([data], self.config.seq_length),
             self.model.keep_prob: 1.0
         }
-
+#       # y_pred_cls = tf.argmax(tf.nn.softmax(self.logits), 1)  # 预测类别
         y_pred_cls = self.session.run (self.model.y_pred_cls, feed_dict=feed_dict)
         return self.categories[y_pred_cls[0]]
 
@@ -59,35 +60,35 @@ class CnnModel:
 # type(Q) == str
 def demo_test(Question):
     # ---get message---start replying
-    print (f"the question is {Question}。")
+    print (f"The input from front-end :{Question}。")
     # 分類問題_debug
-    print (f"the question category belongs to {cnn_model.predict (Question)}.")
+    print (f"LSTM model predict the input belongs to {cnn_model.predict (Question)} category.")
     # 分類問題類別(10類)，開啟該工作表
     ws = wb.sheet_by_name (cnn_model.predict (Question))
     # init and reset & reuse dictionary
     f = {}
     # iterate rows from A1 to B2 in dictionary f
     for j in range (ws.nrows):
-        # key:question,val:answer
+        # key:question,val:answer, f = {question:answer,q:a}
         f[ws.cell (j, 0).value] = ws.cell (j, 1).value
     # 取得最相似的問題
-    answer = process.extractOne (Question, [questions for questions in f])
+    answer = process.extractOne (Question, [questions for questions in f], scorer=fuzz.partial_token_sort_ratio)
     # (最相似的問題,相似度)_debug
     print (answer)
 
     # 二次比對問題相似度_debug
-    print (f"fuzz.token_set_ratio:{fuzz.token_set_ratio (answer[0], Question)}")
+    print (f"This is the accuracy from fuzz.partial_token_sort_ratio: {fuzz.partial_token_sort_ratio (answer[0], Question)}")
 
     # 依照最佳回應程度分別做回應
     if answer[1] > 60 and fuzz.token_set_ratio (answer[0], Question) > 60:
-        print (f"The best reply is {f.get (answer[0])}.")
-        return "The best reply is " + f.get (answer[0])
+        print (f"The best reply : {f.get (answer[0])}.")
+        return f.get (answer[0])
     elif answer[1] > 50:
-        print (f"The answer might be {f.get (answer[0])}.")
-        return "The answer might be " + f.get (answer[0])
+        print (f"The minimum accuracy reply : {f.get (answer[0])}.")
+        return "也許你要的是" + f.get (answer[0])
     else:
-        print ("sorry I don't get it")
-        return "sorry I don't get it"
+        print ("Bad accuracy")
+        return "抱歉，我不確定你在說什麼。"
 
 
 # single thread socket connection
@@ -101,10 +102,7 @@ def clientthread(connection):
 
         # response to client
         connection.send (bytes (demo_test (data.decode ('UTF-8')), encoding='utf-8'))
-
-    connection.close ()
-    print ("server closed")
-
+    # Server closed
 
 if __name__ == '__main__':
     # loading...
@@ -113,7 +111,7 @@ if __name__ == '__main__':
     # loading model
     cnn_model = CnnModel ()
     # ---loading complete---
-    HOST = "163.13.28.46"  # see shell>ipconfig
+    HOST = "192.168.100.22"  # see shell>ipconfig
     PORT = 8000
     print (HOST)
     # starting up socket ...
