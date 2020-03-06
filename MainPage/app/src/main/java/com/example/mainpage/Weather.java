@@ -4,8 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import org.json.JSONArray;
@@ -25,9 +23,11 @@ public class Weather extends AppCompatActivity {
     TextView temp;
     TextView degree;
     TextView humidity;
+    // To apply API Key -> Google Cloud Platform
+    String Google_Weather_API="";
 
-
-    class Weather1 extends AsyncTask<String, Void, String> { // First String means URL is in String, Void mean nothing, Third String means Return type will be String
+    // AsyncTask<URL,nothing,Return type>
+    class Weather1 extends AsyncTask<String, Void, String> {
 
         @Override
         protected String doInBackground(String... address) {
@@ -68,27 +68,23 @@ public class Weather extends AppCompatActivity {
     }
 
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather);
-
-
         cityName = findViewById(R.id.cityName);
         cloud = findViewById(R.id.cloud);
         temp = findViewById(R.id.temperature);
         degree = findViewById(R.id.degree);
         humidity = findViewById(R.id.hum);
-        final String cName = "jiaoxi";
 
-        String content;
+        final String CityName = "jiaoxi";
+
+
         Weather1 weather = new Weather1();
         try {
-            content = weather.execute("https://openweathermap.org/data/2.5/weather?q=" + cName +
-                    "&appid=b6907d289e10d714a6e88b30761fae22").get();
+            String content = weather.execute("https://openweathermap.org/data/2.5/weather?q=" + CityName +
+                    "&appid="+Google_Weather_API).get();
 
             //First we will check data is retrieve successfully or not
 
@@ -104,19 +100,12 @@ public class Weather extends AppCompatActivity {
 
             JSONArray array = new JSONArray(weatherData);
 
-            String main = "";
-            String description = "";
-            String temperature = "";
-            String temp_min = "";
-            String temp_max = "";
-            String hum = "";
-
+            String main,description="",temperature,temp_min,temp_max,hum;
 
             for (int i = 0; i < array.length(); i++) {
                 JSONObject weatherPart = array.getJSONObject(i);
                 main = weatherPart.getString("main");
                 description = weatherPart.getString("description");
-
             }
 
             JSONObject mainPart = new JSONObject(mainTemperature);
@@ -128,23 +117,15 @@ public class Weather extends AppCompatActivity {
             visibility = Double.parseDouble(jsonObject.getString("visibility"));
             //By default visibility is in meter
             int visibilityInKilometer = (int) visibility / 1000;
-
-
 //            String resultText = "Main :      "+main+"" +
 //                    "\nDescription :    "+description + "" +
 //                    "\nTemperature :    "+temperature + "*C"+
 //                    "\nvisibility :     "+ visibilityInKilometer + "KM";
-            String temperaturetxt = temperature + "*C";
 
-
-            temp.setText(temperaturetxt);
+            temp.setText(temperature + "*C");
             cloud.setText(description);
             degree.setText("最低溫 ~ 最高溫\n" + temp_min + "~" + temp_max);
             humidity.setText("濕度\n" + hum + "%");
-
-
-
-            //Now we will show this result on screen
         } catch (Exception e) {
             e.printStackTrace();
         }
