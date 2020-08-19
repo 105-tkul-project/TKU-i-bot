@@ -22,7 +22,7 @@ for sheets in wb.sheet_names ():
     # iter rows
     for i in range (ws.nrows):
         # create txt with rows, overwrite if file exist
-        with open (f"{i}.txt", 'w') as f:
+        with open (f"{i}.txt", 'w', encoding='utf-8') as f:
             f.write (f"{ws.cell (i, 0).value}")
 
     os.chdir (base)
