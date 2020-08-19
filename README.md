@@ -6,29 +6,28 @@ Inputting text from android app chat room, reply a sentence about Tamkang Univer
 
 # Environment
 Python 3.7
-TensorFlow over 1.3
+TensorFlow 1.6 below 2.X
 numpy
 scikit-learn
 scipy
 fuzzywuzzy
 
 # Data Set
-本次訓練使用了其中的10個分類，每个分類100條數據。
+本次訓練使用了其中的10個分類，每个分類1000條數據。
 數據集劃分如下：
+訓練集: 800*10
+驗證集: 200*10
+測試集: 200*10
 
-訓練集: 5000*10
-驗證集: 500*10
-測試集: 1000*10
-從原數據集生成子集的過程请參看cnews_group.py, 將多個文件整合到一個文件中。執行該文件後，得到三個數據文件：
+從原數據集生成子集的過程请先執行cnews_group.py, 將多個文件整合到一個文件中。執行該文件後，得到三個數據文件：
 
-cnews.train.txt: 訓練集(800条)
-cnews.val.txt: 驗證集(600条)
-cnews.test.txt: 測試集(200条)
+train.txt: 訓練集(800条)
+val.txt: 驗證集(200条)
+test.txt: 測試集(200条)
 
 # ProProcessing
 
-data/cnews_loader.py為數據預處理文件。
-
+cnews_loader.py為數據預處理文件。
 read_file(): 讀取文件數據;
 build_vocab(): 構建詞匯表，使用字符級的表示，这一函數會將詞匯表存儲下来，避免每一次重復處理;
 read_vocab(): 讀取上一步存儲的詞匯表，轉換為{詞：id}表示;
@@ -74,5 +73,6 @@ class TRNNConfig(object):
 運行 python run_rnn.py test 在測試集上進行測試。
 
 # Predict
-
 為方便預測，repo 中 predict.py 提供了 RNN 模型的預測方法。
+MainPage/app/src/main/java/com/example/mainpage/的MessageActivity.java跟LSTM_text_classification/predict.py 都要先設定IP
+先執行predict.py進入等待狀態 ， 在執行MainPage。
