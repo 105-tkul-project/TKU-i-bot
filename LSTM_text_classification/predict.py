@@ -6,9 +6,8 @@ import os
 import tensorflow as tf
 import tensorflow.contrib.keras as kr
 
-from cnn_model import TCNNConfig, TextCNN
 from rnn_model import TRNNConfig, TextRNN
-from data.cnews_loader import read_category, read_vocab
+from cnews_loader import read_category, read_vocab
 # -----------------------------------------------------
 from fuzzywuzzy import fuzz
 from fuzzywuzzy import process
@@ -22,8 +21,8 @@ try:
 except NameError:
     unicode = str
 # data path(model,Q&A database)
-base_dir = 'data/cnews'
-vocab_dir = os.path.join(base_dir, 'cnews.vocab.txt')
+base_dir = 'data'
+vocab_dir = os.path.join(base_dir, 'vocab.txt')
 
 save_dir = 'checkpoints/textrnn'
 save_path = os.path.join(save_dir, 'best_validation')  # 最佳验证结果保存路径
@@ -113,7 +112,7 @@ if __name__ == '__main__':
     # loading model
     cnn_model = CnnModel()
     # ---loading complete---
-    HOST = "192.168.100.22"  # see shell>ipconfig
+    HOST = "xxx.xxx.xxx.xxx"  # see shell>ipconfig
     PORT = 8000
     print(HOST)
     # starting up socket ...

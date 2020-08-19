@@ -22,8 +22,8 @@ class TRNNConfig(object):
     batch_size = 32         # 每批训练大小<--
     num_epochs = 12          # 总迭代轮次<--
 
-    print_per_batch = 1    # 每多少轮输出一次结果
-    save_per_batch = 1      # 每多少轮存入tensorboard
+    print_per_batch = 8    # 每多少轮输出一次结果
+    save_per_batch = 8      # 每多少轮存入tensorboard
 
 
 class TextRNN(object):

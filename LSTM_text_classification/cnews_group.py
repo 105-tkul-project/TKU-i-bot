@@ -10,8 +10,10 @@ import os
 
 def _read_file(filename):
     """读取一个文件并转换为一行"""
+
     with open (filename, 'r', encoding='utf-8') as f:
         return f.read ().replace ('\n', '').replace ('\t', '').replace ('\u3000', '')
+
 
 
 def save_file(dirname):
@@ -20,10 +22,12 @@ def save_file(dirname):
     dirname: 原数据目录
     文件内容格式:  类别\t内容
     """
-    f_train = open ('data/cnews/cnews.train.txt', 'w', encoding='utf-8')
-    f_test = open ('data/cnews/cnews.test.txt', 'w', encoding='utf-8')
-    f_val = open ('data/cnews/cnews.val.txt', 'w', encoding='utf-8')
+    f_train = open ('data/train.txt', 'w', encoding='utf-8')
+    f_test = open ('data/test.txt', 'w', encoding='utf-8')
+    f_val = open ('data/val.txt', 'w', encoding='utf-8')
     for category in os.listdir (dirname):  # 分类目录
+        if "." in category:
+            continue
         cat_dir = os.path.join (dirname, category)
         if not os.path.isdir (cat_dir):
             continue
@@ -48,7 +52,7 @@ def save_file(dirname):
 
 
 if __name__ == '__main__':
-    save_file ('data/cnews')
-    print (len (open ('data/cnews/cnews.train.txt', 'r', encoding='utf-8').readlines ()))
-    print (len (open ('data/cnews/cnews.test.txt', 'r', encoding='utf-8').readlines ()))
-    print (len (open ('data/cnews/cnews.val.txt', 'r', encoding='utf-8').readlines ()))
+    save_file ('data')
+    print (len (open ('data/train.txt', 'r', encoding='utf-8').readlines ()))
+    print (len (open ('data/test.txt', 'r', encoding='utf-8').readlines ()))
+    print (len (open ('data/val.txt', 'r', encoding='utf-8').readlines ()))
